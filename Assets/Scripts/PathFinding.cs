@@ -7,8 +7,9 @@ using System;
 public class PathFinding : MonoBehaviour
 {
     Grid grid;
-    PathRequestManager pathRequestManager;
+   // PathRequestManager pathRequestManager;
     Vector3[] waypoints;
+    Vector3 pathstart;
 
     public IEnumerator FindPath(Vector3 startpos,Vector3 targetpos)
     {
@@ -26,8 +27,14 @@ public class PathFinding : MonoBehaviour
             OpenSet.Add(StartNode);
             while (OpenSet.Count > 0)
             {
+                
+                
                 Node CurrentNode = OpenSet.RemoveFirst();
+                // print("index"+CurrentNode.HeapIndex);
+                print("CurrentNode"+CurrentNode.F_Cost);
                 ClosedSet.Add(CurrentNode);
+                CurrentNode.gm.GetComponent<SpriteRenderer>().color = Color.green;
+                CurrentNode.text.text = CurrentNode.F_Cost.ToString();
                 if (CurrentNode == TargetNode)
                 {
                     pathsuccess = true;
@@ -37,39 +44,63 @@ public class PathFinding : MonoBehaviour
                 }
                 foreach (Node neighbour in grid.GetNeighbours(CurrentNode))
                 {
+                   // neighbour.gm.GetComponent<SpriteRenderer>().color = Color.black;
                     if (!(neighbour.walkable) || ClosedSet.Contains(neighbour)) continue;
                     int NewMovementcosttoNeighbour = CurrentNode.G_Cost + GetDistance(CurrentNode, neighbour);
+                    //print("new1="+NewMovementcosttoNeighbour);
                     if (NewMovementcosttoNeighbour < neighbour.G_Cost || !OpenSet.Contains(neighbour))
                     {
                         neighbour.G_Cost = NewMovementcosttoNeighbour;
                         neighbour.H_Cost = GetDistance(neighbour, TargetNode);
                         neighbour.Parent = CurrentNode;
+                        neighbour.text.text = neighbour.F_Cost.ToString();
+                      //  print("new1+1=" + neighbour.G_Cost);
+                       // print("new1=" + neighbour.H_Cost);
                         if (!OpenSet.Contains(neighbour))
                         {
+                            neighbour.gm.GetComponent<SpriteRenderer>().color = Color.red;
                             OpenSet.Add(neighbour);
+                          //  neighbour.text.text = neighbour.F_Cost.ToString();
                         }
                         else
                         {
+
                             OpenSet.UpdateItem(neighbour);
+                            neighbour.text.text = neighbour.F_Cost.ToString();
                         }
 
                     }
+                    //yield return new WaitForSeconds(2f);
                 }
+                yield return new WaitForSeconds(2f);
             }
         }
         yield return null;
         if (pathsuccess)
         {
             waypoints = TracePath(StartNode,TargetNode);
-
+          
+            print("okey path found");
         }
-        pathRequestManager.FinishedProcessingUnit(waypoints,pathsuccess);
+      //  pathRequestManager.FinishedProcessingUnit(waypoints,pathsuccess);
+    }
+    void drawpath()
+    {
+       
+        Node currnode = grid.NodeFromWorldPoint(pathstart);
+        for (int i=0;i<waypoints.Length;i++)
+        {
+          
+            currnode.gm.GetComponent<SpriteRenderer>().color = Color.blue;
+            Vector3 pos = waypoints[i];
+            currnode = grid.NodeFromWorldPoint(pos);
+        }
     }
 
      public void startFindPath(Vector3 pathStart, Vector3 pathEnd)
     {
         //throw new NotImplementedException();
-
+        this.pathstart = pathStart;
         StartCoroutine(FindPath(pathStart,pathEnd));
 
     }
@@ -80,10 +111,13 @@ public class PathFinding : MonoBehaviour
         Node currentNode = EndNode;
         while (currentNode != StartNode)
         {
+            currentNode.gm.GetComponent<SpriteRenderer>().color = Color.blue;
            path.Add(currentNode);
            currentNode= currentNode.Parent;
         }
-       waypoints= Simplifypath(path);
+        currentNode.gm.GetComponent<SpriteRenderer>().color = Color.blue;
+        //  waypoints= Simplifypath(path);
+        // waypoints= path.ToArray();
         Array.Reverse(waypoints);
         return waypoints;
       
@@ -109,7 +143,7 @@ public class PathFinding : MonoBehaviour
     private void Awake()
     {
         grid = this.GetComponent<Grid>();
-        pathRequestManager = GetComponent<PathRequestManager>();
+       // pathRequestManager = GetComponent<PathRequestManager>();
     }
 
     int GetDistance(Node nodeA,Node nodeB)

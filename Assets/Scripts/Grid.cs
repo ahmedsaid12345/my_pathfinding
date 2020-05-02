@@ -9,23 +9,28 @@ public class Grid : MonoBehaviour
     public Transform player;
     public LayerMask unWalkableMask;
     public float NodeRaduis;
-    public GameObject cube;
+   public GameObject spirit;
+    public float offset;
 
     public Vector3 gridorigin;
     public Vector2 grideWorldSize;
     Node[,] grid;
-    public float raisevalue;
+ //   public float raisevalue;
     float Nodediameter;
-    int grideSizeX;
-    int grideSizeY;
+    [HideInInspector]
+    public int grideSizeX;
+    [HideInInspector]
+    public int grideSizeY;
+    
+    /// <summary>
+    ///  for debuging
+    /// </summary>
     TextMesh[,] debugtext;
     private void Awake()
     {
         Nodediameter = NodeRaduis * 2;
         grideSizeX = Mathf.RoundToInt(grideWorldSize.x / Nodediameter);
         grideSizeY = Mathf.RoundToInt(grideWorldSize.y / Nodediameter);
-        print("grideSizex="+grideSizeX+" gridesizey="+grideSizeY);
-        debugtext = new TextMesh[grideSizeX, grideSizeY];
         CreateGrid();
       
 
@@ -38,15 +43,20 @@ public class Grid : MonoBehaviour
 
             Node node = NodeFromWorldPoint(pos);
 
-            //  Node highlightednode= NodeFromWorldPoint(pos);
             if (node !=null) {
-                Debug.Log("u pressed at =" + (node.gridX * grideSizeY + node.gridY));
+               
+                node.gm.GetComponent<SpriteRenderer>().color = Color.green;
+
             }
-            //}
+      
 
 
 
-        }
+         }
+
+
+
+
 
     }
 
@@ -55,48 +65,68 @@ public class Grid : MonoBehaviour
     {
 
         grid = new Node[grideSizeX, grideSizeY];
-        worldbottomleft = transform.position - Vector3.right * grideWorldSize.x / 2 - Vector3.up * grideWorldSize.y / 2;
-        print("origin"+worldbottomleft);
+        worldbottomleft = transform.position +Vector3.one*offset - Vector3.right * grideWorldSize.x / 2 - Vector3.up * grideWorldSize.y / 2;
+ 
         for (int x = 0; x < grideSizeX; x++)
         {
             for (int y = 0; y < grideSizeY; y++)
             {
+                GameObject gm_text = new GameObject("text",typeof(TextMesh));
                 Vector3 WorldPoint = worldbottomleft + Vector3.right * (x * Nodediameter + NodeRaduis) + Vector3.up * (y * Nodediameter + NodeRaduis);
-           
-                bool walkable = !(Physics.CheckSphere(WorldPoint, NodeRaduis, unWalkableMask));
-                grid[x, y] = new Node(walkable, WorldPoint, x, y);
-        
+              
+                bool walkable = !(Physics2D.OverlapCircle(WorldPoint,NodeRaduis,unWalkableMask));//.CheckSphere(WorldPoint, NodeRaduis, unWalkableMask));
+                GameObject gm = Instantiate(spirit,WorldPoint+Vector3.one*NodeRaduis,Quaternion.identity);
+                //  TextMesh text =new TextMesh();
+                gm_text.GetComponent<TextMesh>().text = "0";
+                gm_text.transform.position = WorldPoint + Vector3.one * NodeRaduis;
+                gm_text.GetComponent<TextMesh>().fontSize = Mathf.FloorToInt(20);
+                gm_text.GetComponent<TextMesh>().anchor = TextAnchor.MiddleCenter;
+                //text.text = "0";
+
+                grid[x, y] = new Node(walkable, WorldPoint, x, y,gm,gm_text.GetComponent<TextMesh>());
+
+         
 
             }
         }
-        for (int x = 0; x < grideSizeX; x++)
-        {
-            for (int y = 0; y < grideSizeY; y++)
-            {
-      
-                GameObject text = new GameObject("text"+ (x * grideSizeY + y).ToString(),typeof(TextMesh));
-
-               text.GetComponent<TextMesh>().text = (x * grideSizeY + y).ToString();
-                text.transform.position = grid[x, y].worldposition + Vector3.one*NodeRaduis;
-                text.GetComponent<TextMesh>().fontSize = 10;
-                text.GetComponent<TextMesh>().anchor = TextAnchor.MiddleCenter;
-                debugtext[x, y] = text.GetComponent<TextMesh>();
-
-            }
-        }
-
+              // debugarray(this.grideSizeX,this.grideSizeY,Mathf.FloorToInt(Nodediameter*0.8f));
+       // debugarray();
 
 
 
 
     }
 
+    /// <summary>
+    /// debugging array
+    /// </summary>
+    /// <param name="grideSizeX"></param>
+    /// <param name="grideSizeY"></param>
+    /// <param name="fontsize"></param>
+    /// <returns></returns>
+    void debugarray(int fontsize)
+    {
+        // TextMesh[,] debugtext = new TextMesh[grideSizeX,grideSizeY];
+
+       // TextMesh text = new TextMesh();
+                //  GameObject text = new GameObject("text" + (x * grideSizeY + y).ToString(), typeof(TextMesh));
+             //   Node currnode = grid[x, y];
+           //   text.text ="0" ;
+               // currnode.text.gameObject.transform.position = currnode.worldposition + Vector3.one * NodeRaduis;
+                //currnode.text.fontSize = fontsize;
+               //currnode.text.anchor = TextAnchor.MiddleCenter;
+                //debugtext[x, y] = currnode.text;
+
+         
+      //  return debugtext;
+    }
+
     Vector3 getworldpoint(int x, int y)
     {
-        //not complete
-        //Vector3 worldbottomleft = transform.position - (Vector3.right * grideSizeX / 2) - (Vector3.up * grideSizeY / 2);
+     
+      
         Vector3 WorldPoint = worldbottomleft + Vector3.right * (x * Nodediameter + NodeRaduis) + Vector3.up * (y * Nodediameter + NodeRaduis);
-        //    x *cell  + cellsize + y * cellsize;
+       
         return WorldPoint;
 
     }
@@ -134,7 +164,7 @@ public class Grid : MonoBehaviour
     /// </summary>
     public Node NodeFromWorldPoint(Vector3 playerpos)
     {
-        if (playerpos.x>=worldbottomleft.x && playerpos.y>=worldbottomleft.y && playerpos.x< (worldbottomleft.x+ grideWorldSize.x) && playerpos.y < (worldbottomleft.y + grideWorldSize.y)) {
+        /* if (playerpos.x>=worldbottomleft.x && playerpos.y>=worldbottomleft.y && playerpos.x< (worldbottomleft.x+ grideWorldSize.x) && playerpos.y < (worldbottomleft.y + grideWorldSize.y)) {
             float percentX = (playerpos.x + grideWorldSize.x / 2) / grideWorldSize.x;
             float percentY = (playerpos.y + grideWorldSize.y / 2) / grideWorldSize.y;
             percentX = Mathf.Clamp01(percentX);
@@ -143,34 +173,37 @@ public class Grid : MonoBehaviour
             int y = Mathf.RoundToInt((grideSizeY - 1) * percentY);
             return grid[x, y];
         }
-        return null;
+        return null;  */
+        int cx = (int)((playerpos.x - worldbottomleft.x) * grideSizeX / ((grideSizeX - 1) * Nodediameter + NodeRaduis) - 1);
+        int cy = (int)((playerpos.y - worldbottomleft.y) * grideSizeY / ((grideSizeY - 1) * Nodediameter + NodeRaduis) - 1);
+        if (cx < 0 || cx >= grideSizeX || cy < 0 || cy >= grideSizeY) return null;
+        return grid[cx, cy];
     }
 
 
 
     private void OnDrawGizmos()
     {
-        // Gizmos.DrawWireCube(transform.position, new Vector3(grideWorldSize.x, 1, grideWorldSize.y));
-
-        //  Gizmos.DrawLine();
-        for (int x = 0; x < grideSizeX; x++)
-        {
-            for (int y = 0; y < grideSizeY; y++)
+  
+        if (displaygridGizmos) {
+            for (int x = 0; x < grideSizeX; x++)
             {
-                // Vector3 WorldPoint = worldbottomleft + Vector3.right * (x * Nodediameter + NodeRaduis) + Vector3.up * (y * Nodediameter + NodeRaduis);
-                //   WorldPoint.y += raisevalue;
-                //bool walkable = !(Physics.CheckSphere(WorldPoint, NodeRaduis, unWalkableMask));
-                // grid[x, y] = new Node(walkable, WorldPoint, x, y);
-              // Gizmos.DrawCube(grid[x, y].worldposition, Vector3.one*Nodediameter - (Vector3.one * .3f));
+                for (int y = 0; y < grideSizeY; y++)
+                {
+                    
 
-                Debug.DrawLine(getworldpoint(x, y), getworldpoint(x + 1, y));
-                Debug.DrawLine(getworldpoint(x, y), getworldpoint(x, y + 1));
-              
-                // }
-                //}
+                    Debug.DrawLine(getworldpoint(x, y), getworldpoint(x + 1, y));
+                    Debug.DrawLine(getworldpoint(x, y), getworldpoint(x, y + 1));
+                    if (grid[x, y].walkable == false)
+                    {
+                        Gizmos.DrawSphere(grid[x, y].worldposition, NodeRaduis);
+                    }
+                   
 
-
+                }
             }
+            Debug.DrawLine(getworldpoint(0, grideSizeY), getworldpoint(grideSizeX, grideSizeY));
+            Debug.DrawLine(getworldpoint(grideSizeX, 0), getworldpoint(grideSizeX, grideSizeY));
         }
     }
 }

@@ -12,14 +12,17 @@ public class Node :IHeapItem<Node>
     public int gridX;
     public int gridY;
     int heapindex;
+   public GameObject gm;
+    public TextMesh text;
 
     public Node Parent;
-    public Node(bool _walkable,Vector3 _worldpos,int _gridX,int _gridY) {
+    public Node(bool _walkable,Vector3 _worldpos,int _gridX,int _gridY,GameObject _gm,TextMesh _text) {
         this.walkable = _walkable;
         this.worldposition = _worldpos;
         this.gridX = _gridX;
         this.gridY = _gridY;
-
+        this.gm = _gm;
+        this.text = _text;
     }
     public int F_Cost
     {

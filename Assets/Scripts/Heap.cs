@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
+
+// this just Data Structure (Heap Data Structure)
+
 public class Heap <T> where T :IHeapItem<T>
 {
 
     T[] items;
-    int CurrentItemCount;
+    int CurrentItemCount=0;
     public Heap(int MaxHeapSize)
     {
         items = new T [MaxHeapSize];
@@ -74,7 +78,7 @@ public class Heap <T> where T :IHeapItem<T>
                 smallerIndex = GetRightChildIndex(item.HeapIndex);
             }
 
-            if (!(item.CompareTo(items[smallerIndex])>0))
+            if (item.CompareTo(items[smallerIndex]) < 0)
             {
                 break;
             }
@@ -123,7 +127,7 @@ public class Heap <T> where T :IHeapItem<T>
     }
 
 
-    void SortUp_other(T item)
+    void SortUp(T item)
     {
        T Parent_item= GetParent(item.HeapIndex);
 
@@ -133,9 +137,10 @@ public class Heap <T> where T :IHeapItem<T>
             //Parent_item = GetParent(item.HeapIndex);
             Parent_item = items[item.HeapIndex];
 
+
         }
     }
-    void SortUp(T item)
+    void SortUp_other(T item)
     {
         // T Parent_item = GetParent(item.HeapIndex);
         int parent_index = (item.HeapIndex - 1) / 2;

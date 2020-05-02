@@ -64,10 +64,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\Heap.cs" />
+    <Compile Include="Assets\Scripts\HeatMapVisual.cs" />
+    <Compile Include="Assets\Scripts\MeshUtils.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
     <Compile Include="Assets\Scripts\PathRequestManager.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
+    <Compile Include="Assets\Scripts\arrayofobjects.cs" />
+    <Compile Include="Assets\Scripts\my_Test.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/JoinTEAM/my_pathfinding/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
