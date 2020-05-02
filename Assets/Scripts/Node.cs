@@ -47,6 +47,10 @@ public class Node :IHeapItem<Node>
         }
         return Compare;
     }
+    public override string ToString()
+    {
+        return gridX + "," + gridY + "(" + (G_Cost + H_Cost) + ")";
+    }
 
 
 }

@@ -75,8 +75,14 @@ public class Grid : MonoBehaviour
                 Vector3 WorldPoint = worldbottomleft + Vector3.right * (x * Nodediameter + NodeRaduis) + Vector3.up * (y * Nodediameter + NodeRaduis);
               
                 bool walkable = !(Physics2D.OverlapCircle(WorldPoint,NodeRaduis,unWalkableMask));//.CheckSphere(WorldPoint, NodeRaduis, unWalkableMask));
+              
                 GameObject gm = Instantiate(spirit,WorldPoint+Vector3.one*NodeRaduis,Quaternion.identity);
                 //  TextMesh text =new TextMesh();
+                if (!walkable)
+                {
+                    print("hi");
+                    gm.GetComponent<SpriteRenderer>().color = Color.yellow;
+                }
                 gm_text.GetComponent<TextMesh>().text = "0";
                 gm_text.transform.position = WorldPoint + Vector3.one * NodeRaduis;
                 gm_text.GetComponent<TextMesh>().fontSize = Mathf.FloorToInt(20);

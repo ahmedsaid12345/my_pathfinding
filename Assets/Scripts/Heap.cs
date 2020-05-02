@@ -9,11 +9,22 @@ using System;
 public class Heap <T> where T :IHeapItem<T>
 {
 
-    T[] items;
+   public T[] items;
     int CurrentItemCount=0;
     public Heap(int MaxHeapSize)
     {
         items = new T [MaxHeapSize];
+    }
+    public void debugheap()
+    {
+        // foreach (T item in items)
+        for (int i = 0; i < CurrentItemCount; i++)
+        {
+          //  Debug.Log("hi"+i);
+            Debug.Log(items[i].ToString());
+
+        }
+        
     }
 
     /// <summary>
@@ -127,7 +138,7 @@ public class Heap <T> where T :IHeapItem<T>
     }
 
 
-    void SortUp(T item)
+    void SortUp_other(T item)
     {
        T Parent_item= GetParent(item.HeapIndex);
 
@@ -140,7 +151,7 @@ public class Heap <T> where T :IHeapItem<T>
 
         }
     }
-    void SortUp_other(T item)
+    void SortUp(T item)
     {
         // T Parent_item = GetParent(item.HeapIndex);
         int parent_index = (item.HeapIndex - 1) / 2;
@@ -150,6 +161,7 @@ public class Heap <T> where T :IHeapItem<T>
             if (item.CompareTo(parent_item) < 0)
             {
                 Swap(item, parent_item);
+               parent_index = (item.HeapIndex - 1) / 2;
 
             }
             else break;

@@ -29,9 +29,7 @@ public class PathFinding : MonoBehaviour
             {
                 
                 
-                Node CurrentNode = OpenSet.RemoveFirst();
-                // print("index"+CurrentNode.HeapIndex);
-                print("CurrentNode"+CurrentNode.F_Cost);
+               Node CurrentNode = OpenSet.RemoveFirst();
                 ClosedSet.Add(CurrentNode);
                 CurrentNode.gm.GetComponent<SpriteRenderer>().color = Color.green;
                 CurrentNode.text.text = CurrentNode.F_Cost.ToString();
@@ -44,23 +42,19 @@ public class PathFinding : MonoBehaviour
                 }
                 foreach (Node neighbour in grid.GetNeighbours(CurrentNode))
                 {
-                   // neighbour.gm.GetComponent<SpriteRenderer>().color = Color.black;
                     if (!(neighbour.walkable) || ClosedSet.Contains(neighbour)) continue;
                     int NewMovementcosttoNeighbour = CurrentNode.G_Cost + GetDistance(CurrentNode, neighbour);
-                    //print("new1="+NewMovementcosttoNeighbour);
                     if (NewMovementcosttoNeighbour < neighbour.G_Cost || !OpenSet.Contains(neighbour))
                     {
                         neighbour.G_Cost = NewMovementcosttoNeighbour;
                         neighbour.H_Cost = GetDistance(neighbour, TargetNode);
                         neighbour.Parent = CurrentNode;
                         neighbour.text.text = neighbour.F_Cost.ToString();
-                      //  print("new1+1=" + neighbour.G_Cost);
-                       // print("new1=" + neighbour.H_Cost);
                         if (!OpenSet.Contains(neighbour))
                         {
                             neighbour.gm.GetComponent<SpriteRenderer>().color = Color.red;
                             OpenSet.Add(neighbour);
-                          //  neighbour.text.text = neighbour.F_Cost.ToString();
+                         
                         }
                         else
                         {
@@ -70,9 +64,9 @@ public class PathFinding : MonoBehaviour
                         }
 
                     }
-                    //yield return new WaitForSeconds(2f);
+                  //  yield return new WaitForSeconds(2f);
                 }
-                yield return new WaitForSeconds(2f);
+               // yield return new WaitForSeconds(.5f);
             }
         }
         yield return null;
@@ -81,6 +75,10 @@ public class PathFinding : MonoBehaviour
             waypoints = TracePath(StartNode,TargetNode);
           
             print("okey path found");
+        }
+        else
+        {
+            print("hey bitch no path");
         }
       //  pathRequestManager.FinishedProcessingUnit(waypoints,pathsuccess);
     }
