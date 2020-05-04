@@ -7,8 +7,9 @@ using System;
 public class PathFinding : MonoBehaviour
 {
     Grid grid;
-   // PathRequestManager pathRequestManager;
+     PathRequestManager pathRequestManager;
     Vector3[] waypoints;
+
     Vector3 pathstart;
 
     public IEnumerator FindPath(Vector3 startpos,Vector3 targetpos)
@@ -73,19 +74,21 @@ public class PathFinding : MonoBehaviour
         if (pathsuccess)
         {
             waypoints = TracePath(StartNode,TargetNode);
-          
+           // drawpath();
             print("okey path found");
         }
         else
         {
             print("hey bitch no path");
         }
-      //  pathRequestManager.FinishedProcessingUnit(waypoints,pathsuccess);
+      //  print("waypoints"+waypoints.Length);
+        pathRequestManager.FinishedProcessingUnit(waypoints,pathsuccess);
     }
     void drawpath()
     {
        
         Node currnode = grid.NodeFromWorldPoint(pathstart);
+        print("from draw"+waypoints.Length);
         for (int i=0;i<waypoints.Length;i++)
         {
           
@@ -106,6 +109,7 @@ public class PathFinding : MonoBehaviour
     Vector3[] TracePath(Node StartNode,Node EndNode)
     {
         List<Node> path = new List<Node>();
+       // Node[] patharr;
         Node currentNode = EndNode;
         while (currentNode != StartNode)
         {
@@ -114,10 +118,20 @@ public class PathFinding : MonoBehaviour
            currentNode= currentNode.Parent;
         }
         currentNode.gm.GetComponent<SpriteRenderer>().color = Color.blue;
-        //  waypoints= Simplifypath(path);
+        // waypoints= Simplifypath(path);
         // waypoints= path.ToArray();
+        //waypoints= path.ToArray();
+     //   print("path count"+path.Count);
+        waypoints = new Vector3[path.Count]; 
+        for (int i=0;i<path.Count;i++)
+        {
+       //     print("path"+i);
+            waypoints[i] = path[i].worldposition;  
+        }
+         //patharr=    path.ToArray();
+        //patharr
         Array.Reverse(waypoints);
-        return waypoints;
+        return  waypoints;
       
     }
     Vector3[] Simplifypath(List<Node> path)
@@ -141,7 +155,7 @@ public class PathFinding : MonoBehaviour
     private void Awake()
     {
         grid = this.GetComponent<Grid>();
-       // pathRequestManager = GetComponent<PathRequestManager>();
+        pathRequestManager = GetComponent<PathRequestManager>();
     }
 
     int GetDistance(Node nodeA,Node nodeB)

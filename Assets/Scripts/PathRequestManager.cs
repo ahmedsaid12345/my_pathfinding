@@ -18,7 +18,8 @@ public class PathRequestManager : MonoBehaviour
     }
 
 
-    public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[],bool> callback ) {
+    public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[],bool> callback )
+    {
         pathRequest newrequest = new pathRequest(pathStart,pathEnd,callback);
         Instance.pathRequestQueue.Enqueue(newrequest);
         Instance.tryprocessnext();

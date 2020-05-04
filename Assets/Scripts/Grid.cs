@@ -37,7 +37,7 @@ public class Grid : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+      /*  if (Input.GetMouseButtonDown(0))
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 
@@ -49,7 +49,7 @@ public class Grid : MonoBehaviour
 
             }
       
-
+        */
 
 
          }
@@ -58,7 +58,7 @@ public class Grid : MonoBehaviour
 
 
 
-    }
+    
 
     Vector3 worldbottomleft;
     void CreateGrid()
@@ -80,7 +80,7 @@ public class Grid : MonoBehaviour
                 //  TextMesh text =new TextMesh();
                 if (!walkable)
                 {
-                    print("hi");
+                  //  print("hi");
                     gm.GetComponent<SpriteRenderer>().color = Color.yellow;
                 }
                 gm_text.GetComponent<TextMesh>().text = "0";

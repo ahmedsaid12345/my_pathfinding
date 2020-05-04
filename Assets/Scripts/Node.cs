@@ -22,6 +22,7 @@ public class Node :IHeapItem<Node>
         this.gridX = _gridX;
         this.gridY = _gridY;
         this.gm = _gm;
+
         this.text = _text;
     }
     public int F_Cost
@@ -51,6 +52,7 @@ public class Node :IHeapItem<Node>
     {
         return gridX + "," + gridY + "(" + (G_Cost + H_Cost) + ")";
     }
+
 
 
 }
