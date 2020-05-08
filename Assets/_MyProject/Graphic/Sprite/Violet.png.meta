@@ -1,0 +1,436 @@
+fileFormatVersion: 2
+guid: 5c9a374dbc5d26748b56e75cae5bba68
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6838441803909911244
+    second: Grinn_0
+  - first:
+      213: -2319679752592891003
+    second: Grinn_1
+  - first:
+      213: -1089050269627022602
+    second: Grinn_2
+  - first:
+      213: 4769683806588978967
+    second: Grinn_3
+  - first:
+      213: 3070994270976191074
+    second: Grinn_4
+  - first:
+      213: -7849069572884597426
+    second: Grinn_5
+  - first:
+      213: -2806529037343023530
+    second: Grinn_7
+  - first:
+      213: -6354615622800589
+    second: Grinn_8
+  - first:
+      213: -5876154283238669630
+    second: Grinn_9
+  - first:
+      213: 1944971458381949171
+    second: Grinn_10
+  - first:
+      213: 6795333537079125158
+    second: Grinn_11
+  - first:
+      213: -1629362560720184693
+    second: Violet_0
+  - first:
+      213: 4314095436275899324
+    second: Violet_1
+  - first:
+      213: 955634761251269204
+    second: Violet_2
+  - first:
+      213: -2840142044699349048
+    second: Violet_3
+  - first:
+      213: -4758071625999968526
+    second: Violet_4
+  - first:
+      213: 931238415896039822
+    second: Violet_5
+  - first:
+      213: 330800172823608855
+    second: Violet_6
+  - first:
+      213: -8367975712156815126
+    second: Violet_9
+  - first:
+      213: 4975276961636974105
+    second: Violet_10
+  - first:
+      213: -8706779296776838299
+    second: Violet_11
+  - first:
+      213: -1424740128329223735
+    second: Violet_12
+  - first:
+      213: 1439741827351482858
+    second: Violet_8
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Violet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 313
+        width: 240
+        height: 198
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bb76219a72fa7f4fbb6080466939907
+      internalID: -1629362560720184693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_1
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 391
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65fba7c5f5035147b7bbe6ebbf8a3d9
+      internalID: 4314095436275899324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_2
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 391
+        width: 60
+        height: 120
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c31b3dd65eca7974682d8490b07365c5
+      internalID: 955634761251269204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_3
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 431
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dedbefdb78410c46a55058f578cf2c5
+      internalID: -2840142044699349048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_4
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 269
+        width: 236
+        height: 81
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda5f1f5953aae445a1e8c4ec00a96ef
+      internalID: -4758071625999968526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_5
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 351
+        width: 140
+        height: 39
+      alignment: 9
+      pivot: {x: 0.1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dd1ac789c9a9794b94ae9050379f2cd
+      internalID: 931238415896039822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 294
+        width: 96
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd8900962d183ca4084f5e80a7a0def0
+      internalID: 330800172823608855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 237
+        width: 134
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b0659af90f14c4fbe47bb0c26b7028
+      internalID: -8367975712156815126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_10
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 108
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b26b00bb0e1e15439b7730fddca99f1
+      internalID: 4975276961636974105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 16
+        width: 80
+        height: 220
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ee8f62bdb281a84ea6af3c3bb7fe421
+      internalID: -8706779296776838299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_12
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 31
+        width: 53
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1131d5f04be88646889fc4c846ac3f0
+      internalID: -1424740128329223735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Violet_8
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 350
+        width: 80
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3f512153cbf0e4f8d39ee7c8c2acc9
+      internalID: 1439741827351482858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 00b8dd3e44a7e9c4e974e39d7d7de893
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
